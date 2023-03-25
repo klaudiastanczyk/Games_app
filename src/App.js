@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { Navbar } from "./components/Navbar/Navbar.js";
+import styled, { createGlobalStyle } from "styled-components";
+import { useState } from "react";
+import { GameContainerOX } from "./components/GameContainer/GameContainerOX.js";
+import { GameContainerMem } from "./components/GameContainer/GameContainerMem.js";
+import { GameContainerNum } from "./components/GameContainer/GameContainerNum.js";
+import { GameContainerHP } from "./components/GameContainer/GameContainerHP.js";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+  }
+`;
+const GameBox = styled.div`
+  height: 94.5vh;
+  width: 100vw;
+  background-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 function App() {
+  const [activeGame, setActiveGame] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <Navbar activeGame={activeGame} setActiveGame={setActiveGame} />
+      <GameBox>
+        {activeGame === 0 ? (
+          <GameContainerOX />
+        ) : activeGame === 1 ? (
+          <GameContainerMem />
+        ) : activeGame === 2 ? (
+          <GameContainerNum />
+        ) : (
+          <GameContainerHP />
+        )}
+      </GameBox>
+    </>
   );
 }
 
