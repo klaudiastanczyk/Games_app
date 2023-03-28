@@ -112,7 +112,7 @@ export const GameContainerMem = () => {
       ) : null}
       {cardsForPlaying.every((x) => x.isGuess) ? (
         <S.WinContainer>
-          <h1>Congratulations, you won in {counterOfTries} tries</h1>
+          <h1>Congratulations, you won in {counterOfTries} tries!</h1>
           <S.ButtonOnWinScreen
             onClick={() => {
               setCounterOfTries(0);
@@ -123,7 +123,7 @@ export const GameContainerMem = () => {
               setCardsForPlaying(shuffleAnArray(temporaryCards));
             }}
           >
-            Zacznij nowa gre
+            Start the new game
           </S.ButtonOnWinScreen>
         </S.WinContainer>
       ) : (
