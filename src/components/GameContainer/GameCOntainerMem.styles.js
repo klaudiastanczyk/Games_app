@@ -5,7 +5,8 @@ width: 100%;
 height: 100%;
 display: flex;
 position: relative;
-background-image: url("https://i.postimg.cc/g0HvZdYb/pexels-alfo-medeiros-14073236.jpg");
+background-image: url("https://i.postimg.cc/Qd4xkHyh/tapeciarnia-pl-tapeta-liscie-i-kwiaty-na-zielonym-tle-1.jpg");
+object-fit: cover;
 `;
 
 export const Counter = styled.div`
@@ -19,7 +20,7 @@ display: flex;
 flex-direction: row;
 width: 40%;
 position: absolute;
-top: 50px;
+top: 15px;
 left: 50%;
 translate: -50%;
 border: 1px solid #3a33d2e6;
@@ -47,7 +48,7 @@ translate: -50%;
 display: flex;
 justify-content: center;
 align-items: center;
-top: 100px;
+top: 70px;
 `;
 
 export const WinContainer = styled.div`
@@ -71,23 +72,29 @@ align-items: center;
 
 export const CardWrapper = styled.div`
   height: 70%;
-  width: 70%;
-  margin: auto;
+  margin: 150px auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  flex-basis: 90%;
 `;
 
 export const CardContainert = styled.div`
   display: flex;
   width: 20%;
-  height: 300px;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  margin-bottom: 50px;
+  height: 25%;
+  border: 1px solid #DDF0E2;
+  margin-bottom: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  background-color: white;
+  background-color: #DDF0E2;
   opacity: ${({ isAlreadyGuessed }) => (isAlreadyGuessed ? "0%" : "100%")};
 `;
+
+export const MemoCard = styled.img`
+  border-radius: 5px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%
+`

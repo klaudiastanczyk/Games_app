@@ -1,18 +1,13 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { MEMORY_TIMEOUT_SETTING, MEMORY_CARD_SETS } from "./gamesConst";
-import * as S from './GameCOntainerMem.styles'
-
-
-
-
-
+import * as S from "./GameCOntainerMem.styles";
 
 export const GameContainerMem = () => {
   const [clickedCard, setClickedCard] = useState([]);
   const [counterOfTries, setCounterOfTries] = useState(0);
   const [selectedValueOfCards, setSelectedValueOfCards] = useState(1);
-  const { VERSION_WITH_8_CARDS, VERSION_WITH_12_CARDS, VERSION_WITH_24_CARDS } =
+  const { VERSION_WITH_8_CARDS, VERSION_WITH_12_CARDS, VERSION_WITH_16_CARDS } =
     MEMORY_CARD_SETS;
 
   const [cardsForPlaying, setCardsForPlaying] = useState(
@@ -20,7 +15,7 @@ export const GameContainerMem = () => {
       ? VERSION_WITH_8_CARDS
       : selectedValueOfCards === 2
       ? VERSION_WITH_12_CARDS
-      : VERSION_WITH_24_CARDS
+      : VERSION_WITH_16_CARDS
   );
 
   const shuffleAnArray = (array) => {
@@ -38,18 +33,18 @@ export const GameContainerMem = () => {
   }, []);
 
   useEffect(() => {
-    switch(selectedValueOfCards) {
+    switch (selectedValueOfCards) {
       case 1:
         setCardsForPlaying(shuffleAnArray(VERSION_WITH_8_CARDS));
         break;
-      case 2: 
+      case 2:
         setCardsForPlaying(shuffleAnArray(VERSION_WITH_12_CARDS));
         break;
-      case 3: 
-        setCardsForPlaying(shuffleAnArray(VERSION_WITH_24_CARDS));
+      case 3:
+        setCardsForPlaying(shuffleAnArray(VERSION_WITH_16_CARDS));
         break;
     }
-  }, [selectedValueOfCards])
+  }, [selectedValueOfCards]);
 
   useEffect(() => {
     if (clickedCard.length === 2) {
@@ -79,9 +74,24 @@ export const GameContainerMem = () => {
       {!cardsForPlaying.every((x) => x.isGuess) ? (
         <>
           <S.SettingTabs>
-            <S.Tab isSelected={selectedValueOfCards === 1} onClick={() => setSelectedValueOfCards(1)}>8 CARDS</S.Tab>
-            <S.Tab isSelected={selectedValueOfCards === 2} onClick={() => setSelectedValueOfCards(2)}>12 CARDS</S.Tab>
-            <S.Tab isSelected={selectedValueOfCards === 3} onClick={() => setSelectedValueOfCards(3)}>24 CARDS</S.Tab>
+            <S.Tab
+              isSelected={selectedValueOfCards === 1}
+              onClick={() => setSelectedValueOfCards(1)}
+            >
+              8 CARDS
+            </S.Tab>
+            <S.Tab
+              isSelected={selectedValueOfCards === 2}
+              onClick={() => setSelectedValueOfCards(2)}
+            >
+              12 CARDS
+            </S.Tab>
+            <S.Tab
+              isSelected={selectedValueOfCards === 3}
+              onClick={() => setSelectedValueOfCards(3)}
+            >
+              16 CARDS
+            </S.Tab>
           </S.SettingTabs>
           <S.ButtonForNewGame
             onClick={() => {
@@ -93,7 +103,7 @@ export const GameContainerMem = () => {
               setCardsForPlaying(shuffleAnArray(temporaryCards));
             }}
           >
-            Zacznij nowa gre
+            Start the new game
           </S.ButtonForNewGame>
           <S.Counter>
             <p> Amout of tries: {counterOfTries}</p>
@@ -102,7 +112,7 @@ export const GameContainerMem = () => {
       ) : null}
       {cardsForPlaying.every((x) => x.isGuess) ? (
         <S.WinContainer>
-          <h1>Gratulacje, wygrałeś w {counterOfTries} próbach</h1>
+          <h1>Congratulations, you won in {counterOfTries} tries</h1>
           <S.ButtonOnWinScreen
             onClick={() => {
               setCounterOfTries(0);
@@ -119,16 +129,23 @@ export const GameContainerMem = () => {
       ) : (
         <S.CardWrapper>
           {cardsForPlaying.map((card, index) => {
-            const { id, name, image, isGuess } = card;
+            const { name, image, isGuess } = card;
             return (
-              <S.CardContainert key={index} isAlreadyGuessed={isGuess} data-testid={`Card_number${index}`} onClick={() => {
-                if (!isGuess) {
-                  if (clickedCard.length < 2) {
-                    setClickedCard((prev) => [...prev, index]);
+              <S.CardContainert
+                key={index}
+                isAlreadyGuessed={isGuess}
+                data-testid={`Card_number${index}`}
+                onClick={() => {
+                  if (!isGuess) {
+                    if (clickedCard.length < 2) {
+                      setClickedCard((prev) => [...prev, index]);
+                    }
                   }
-                }
-              }}>
-                {clickedCard.includes(index) ? name : null}
+                }}
+              >
+                {clickedCard.includes(index) ? (
+                  <S.MemoCard src={`${process.env.PUBLIC_URL}/${image}`} />
+                ) : null}
               </S.CardContainert>
             );
           })}
