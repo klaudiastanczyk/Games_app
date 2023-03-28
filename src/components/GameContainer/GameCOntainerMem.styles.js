@@ -93,7 +93,7 @@ export const CardContainert = styled.div`
 `;
 
 export const MemoCard = styled.img`
-  border-radius: 5px;
+  border-radius: 6px;
   object-fit: cover;
   width: 100%;
   height: 100%
