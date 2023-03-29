@@ -16,7 +16,7 @@ export const Counter = styled.div`
   position: absolute;
   right: 50px;
   top: 50px;
-  background-color: #B69323;
+  background-color: #19AA8C;
   font-family: 'Amatic SC', cursive;
   font-size: 30px;
   justify-content: center;
@@ -48,7 +48,7 @@ margin-right: 10px;
 background-color: ${({isSelected}) => isSelected ? '#19AA8C' : '#DDF0E2'};
 color: ${({isSelected}) => isSelected ? 'white' : 'black'};
 font-family: 'Amatic SC', cursive;
-font-size: 20px;
+font-size: 25px;
 border-radius: 5px;
 `;
 
@@ -65,7 +65,7 @@ justify-content: center;
 align-items: center;
 top: 70px;
 font-family: 'Amatic SC', cursive;
-font-size: 30px;
+font-size: 25px;
 cursor: pointer;
 `;
 
