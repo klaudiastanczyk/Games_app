@@ -8,7 +8,7 @@ export const NavbarContainer = styled.div`
   background-color: #2f4858;
 `;
 export const NavbarStyled = styled.div`
-  width: 90%;
+  width: 100%;
   margin: 10px auto 0;
   display: flex;
   flex-direction: row;
