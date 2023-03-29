@@ -5,6 +5,8 @@ import { GameContainerOX } from "./components/GameContainer/GameContainerOX.js";
 import { GameContainerMem } from "./components/GameContainer/GameContainerMem.js";
 import { GameContainerNum } from "./components/GameContainer/GameContainerNum.js";
 import { GameContainerHP } from "./components/GameContainer/GameContainerHP.js";
+import { HomeContainer } from "./components/GameContainer/HomeContainer.js";
+import { GameContainerPRS } from "./components/GameContainer/GameContainerPRS.js";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -29,13 +31,17 @@ function App() {
       <Navbar activeGame={activeGame} setActiveGame={setActiveGame} />
       <GameBox>
         {activeGame === 0 ? (
-          <GameContainerOX />
+          <HomeContainer />
         ) : activeGame === 1 ? (
-          <GameContainerMem />
+          <GameContainerOX />
         ) : activeGame === 2 ? (
+          <GameContainerMem />
+        ) : activeGame === 3 ? (
           <GameContainerNum />
-        ) : (
+        ) : activeGame === 4 ? (
           <GameContainerHP />
+        ) : (
+          <GameContainerPRS />
         )}
       </GameBox>
     </>
