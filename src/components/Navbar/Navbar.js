@@ -1,7 +1,7 @@
 import * as S from "./Navbar.styles";
 
 export const Navbar = ({activeGame, setActiveGame}) => {
-  const menuOptions = ["Kółko i krzyżyk", "Memory", "Zgadnij liczbę", "Harry Potter Quiz", 'Papier Kamień Nozyce'];
+  const menuOptions = ["Home", "Tic-Tac-Toe", "Memory", "Guess the number", "Harry Potter Quiz", 'Rock, paper, scissors'];
 
   return (
     <S.NavbarContainer>
@@ -20,4 +20,4 @@ export const Navbar = ({activeGame, setActiveGame}) => {
       </S.NavbarStyled>
     </S.NavbarContainer>
   );
-};
+}; 
