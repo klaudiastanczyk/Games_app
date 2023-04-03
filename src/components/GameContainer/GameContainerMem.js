@@ -70,7 +70,7 @@ export const GameContainerMem = () => {
   }, [clickedCard.length]);
 
   return (
-    <S.MainContainer>
+    <S.MainContainer data-testid="mainContainer">
       {!cardsForPlaying.every((x) => x.isGuess) ? (
         <>
           <S.SettingTabs>
@@ -137,8 +137,10 @@ export const GameContainerMem = () => {
                 data-testid={`Card_number${index}`}
                 onClick={() => {
                   if (!isGuess) {
-                    if (clickedCard.length < 2) {
-                      setClickedCard((prev) => [...prev, index]);
+                    if (!clickedCard.includes(index)) {
+                      if (clickedCard.length < 2) {
+                        setClickedCard((prev) => [...prev, index]);
+                      }
                     }
                   }
                 }}
