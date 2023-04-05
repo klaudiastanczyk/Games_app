@@ -6,7 +6,7 @@ height: 100%;
 display: flex;
 position: relative;
 background-image: url("https://i.postimg.cc/Qd4xkHyh/tapeciarnia-pl-tapeta-liscie-i-kwiaty-na-zielonym-tle-1.jpg");
-object-fit: cover;
+background-size: cover;
 `;
 
 export const Counter = styled.div`
